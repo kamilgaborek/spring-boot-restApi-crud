@@ -1,6 +1,9 @@
-package pl.kamil.videoapp;
+package pl.kamil.videoapp.api;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pl.kamil.videoapp.dao.entity.VideoCassette;
+import pl.kamil.videoapp.manager.VideoCassetteManager;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -10,6 +13,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/cassetts")
 public class VideoCassetteApi  {
+    //NAJPIERW TWORZYLISMY NA LISCIE DO CZASU UTWORZENIA BAZY DANYCH
     public List<VideoCassette> videoCassettes;
 
     public VideoCassetteApi(){
@@ -19,11 +23,18 @@ public class VideoCassetteApi  {
 
     }
 
+    /*private VideoCassetteManager videoCassettes;
+
+    @Autowired
+    public VideoCassetteApi(VideoCassetteManager videoCassettes) {
+        this.videoCassettes = videoCassettes;
+    }
+
     //GetMapping służy do pobierania wartości
     @GetMapping("/all")
-    public List<VideoCassette> getAll(){
-        return  videoCassettes;
-    }
+    public Iterable<VideoCassette> getAll(){
+        return  videoCassettes.findAll();
+    }*/
 
     @GetMapping
     public VideoCassette getById(@RequestParam int index){

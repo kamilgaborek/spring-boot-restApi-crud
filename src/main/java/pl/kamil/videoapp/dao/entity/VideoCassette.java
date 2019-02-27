@@ -1,4 +1,4 @@
-package pl.kamil.videoapp;
+package pl.kamil.videoapp.dao.entity;
 
 import org.springframework.data.annotation.Id;
 
