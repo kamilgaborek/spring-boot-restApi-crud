@@ -1,9 +1,6 @@
 package pl.kamil.videoapp;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -22,6 +19,7 @@ public class VideoCassetteApi  {
 
     }
 
+    //GetMapping służy do pobierania wartości
     @GetMapping("/all")
     public List<VideoCassette> getAll(){
         return  videoCassettes;
@@ -32,5 +30,22 @@ public class VideoCassetteApi  {
         Optional<VideoCassette> first = videoCassettes.stream().
                 filter(element -> element.getId() ==index).findFirst();
         return first.get();
+    }
+
+    //PostMapping słuzy do dodawania wartości
+    @PostMapping
+    public boolean addVideo(@RequestBody VideoCassette videoCassette){
+        return videoCassettes.add(videoCassette);
+    }
+
+    /*//PutMapping nadpisywanie
+    @PutMapping
+    public VideoCassette updateVideo(){
+
+    }
+*/
+    @DeleteMapping
+    public boolean deleteVideo(@RequestParam int index){
+        return videoCassettes.removeIf(element -> element.getId()==index);
     }
 }

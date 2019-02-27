@@ -1,13 +1,19 @@
 package pl.kamil.videoapp;
 
+import org.springframework.data.annotation.Id;
+
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import java.time.LocalDate;
 
+
+@Entity
 public class VideoCassette {
 
 
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Long id;
     private String title;
     private LocalDate productionYear;
